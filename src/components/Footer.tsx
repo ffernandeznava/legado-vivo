@@ -11,12 +11,16 @@ const footerLinks = {
   empresa: [
     { label: "Nuestra historia", href: "/nosotros" },
     { label: "Impacto social", href: "/impacto" },
+    { label: "Historias de artesanos", href: "/artesanos" },
     { label: "Únete a la red", href: "/unete" },
-    { label: " Para empresas", href: "/empresas" },
+    { label: "Para empresas", href: "/empresas" },
   ],
   ayuda: [
     { label: "Preguntas frecuentes", href: "/faq" },
     { label: "Contacto", href: "/contacto" },
+    { label: "Política de envíos", href: "/politica-envios" },
+    { label: "Devoluciones", href: "/politica-devoluciones" },
+    { label: "Aviso de privacidad", href: "/aviso-privacidad" },
   ],
 };
 
@@ -42,25 +46,25 @@ export function Footer() {
                 Legado Vivo
               </span>
             </Link>
-            <p className="text-background/70 mb-6 max-w-md">
+            <p className="text-background/70 text-lg mb-6 max-w-md">
               Somos el puente entre el talento olvidado y tu hogar. Cada compra transforma asilos en talleres de esperanza.
             </p>
             <div className="space-y-3">
               <a
                 href="mailto:hola@legadovivo.mx"
-                className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors"
+                className="flex items-center gap-3 text-lg text-background/70 hover:text-primary transition-colors"
               >
                 <Mail className="w-5 h-5" aria-hidden="true" />
                 hola@legadovivo.mx
               </a>
               <a
                 href="tel:+525512345678"
-                className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors"
+                className="flex items-center gap-3 text-lg text-background/70 hover:text-primary transition-colors"
               >
                 <Phone className="w-5 h-5" aria-hidden="true" />
                 +52 55 1234 5678
               </a>
-              <p className="flex items-center gap-3 text-background/70">
+              <p className="flex items-center gap-3 text-lg text-background/70">
                 <MapPin className="w-5 h-5" aria-hidden="true" />
                 Ciudad de México, México
               </p>
@@ -69,13 +73,13 @@ export function Footer() {
 
           {/* Links Columns */}
           <div>
-            <h3 className="font-display text-lg font-semibold mb-4">Tienda</h3>
+            <h3 className="font-display text-xl font-semibold mb-4">Tienda</h3>
             <ul className="space-y-3" role="list">
               {footerLinks.tienda.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-background/70 hover:text-primary transition-colors"
+                    className="text-lg text-background/70 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -85,13 +89,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-semibold mb-4">Empresa</h3>
+            <h3 className="font-display text-xl font-semibold mb-4">Empresa</h3>
             <ul className="space-y-3" role="list">
               {footerLinks.empresa.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-background/70 hover:text-primary transition-colors"
+                    className="text-lg text-background/70 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -101,13 +105,13 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-display text-lg font-semibold mb-4">Ayuda</h3>
+            <h3 className="font-display text-xl font-semibold mb-4">Ayuda</h3>
             <ul className="space-y-3" role="list">
               {footerLinks.ayuda.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-background/70 hover:text-primary transition-colors"
+                    className="text-lg text-background/70 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -119,7 +123,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-background/60 text-sm">
+          <p className="text-background/60 text-base">
             © {new Date().getFullYear()} Legado Vivo. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4">
@@ -127,7 +131,7 @@ export function Footer() {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
+              className="w-12 h-12 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
               aria-label="Síguenos en Facebook"
             >
               <Facebook className="w-5 h-5" aria-hidden="true" />
@@ -136,7 +140,7 @@ export function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
+              className="w-12 h-12 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
               aria-label="Síguenos en Instagram"
             >
               <Instagram className="w-5 h-5" aria-hidden="true" />
@@ -145,7 +149,7 @@ export function Footer() {
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
+              className="w-12 h-12 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
               aria-label="Síguenos en YouTube"
             >
               <Youtube className="w-5 h-5" aria-hidden="true" />

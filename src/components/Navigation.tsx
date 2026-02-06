@@ -1,29 +1,37 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart, ShoppingBag } from "lucide-react";
- import { useToast } from "@/hooks/use-toast";
+import { Menu, X, Heart, ShoppingBag, ChevronDown } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-const navLinks = [
+const mainNavLinks = [
   { href: "/", label: "Inicio", ariaLabel: "Ir a la página de inicio" },
   { href: "/tienda", label: "Tienda", ariaLabel: "Ver catálogo de productos" },
+  { href: "/artesanos", label: "Artesanos", ariaLabel: "Conocer historias de artesanos" },
   { href: "/empresas", label: "Empresas", ariaLabel: "Soluciones para empresas" },
+];
+
+const moreLinks = [
+  { href: "/nosotros", label: "Nosotros", ariaLabel: "Conocer nuestra historia" },
   { href: "/impacto", label: "Nuestro Impacto", ariaLabel: "Ver nuestro impacto social" },
   { href: "/unete", label: "Únete a la Red", ariaLabel: "Registrar tu centro" },
+  { href: "/faq", label: "Preguntas Frecuentes", ariaLabel: "Ver preguntas frecuentes" },
+  { href: "/contacto", label: "Contacto", ariaLabel: "Contactar con nosotros" },
 ];
+
+const allMobileLinks = [...mainNavLinks, ...moreLinks];
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-   const { toast } = useToast();
- 
-   const handleCartClick = () => {
-     toast({
-       title: "Carrito de compras",
-       description: "Próximamente podrás gestionar tu carrito aquí.",
-     });
-   };
+  const { itemCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +44,8 @@ export function Navigation() {
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
+
+  const isMoreLinkActive = moreLinks.some((link) => location.pathname === link.href);
 
   return (
     <>
@@ -77,13 +87,13 @@ export function Navigation() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
-              <ul className="flex items-center gap-6" role="list">
-                {navLinks.map((link) => (
+            <div className="hidden lg:flex items-center gap-6">
+              <ul className="flex items-center gap-4" role="list">
+                {mainNavLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className={`text-base font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-2 py-1 ${
+                      className={`text-lg font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-3 py-2 ${
                         location.pathname === link.href
                           ? "text-primary"
                           : "text-foreground"
@@ -95,46 +105,98 @@ export function Navigation() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button
+                        className={`flex items-center gap-1 text-lg font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md px-3 py-2 ${
+                          isMoreLinkActive ? "text-primary" : "text-foreground"
+                        }`}
+                      >
+                        Más
+                        <ChevronDown className="w-4 h-4" aria-hidden="true" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-56">
+                      {moreLinks.map((link) => (
+                        <DropdownMenuItem key={link.href} asChild>
+                          <Link
+                            to={link.href}
+                            className={`w-full text-base py-3 ${
+                              location.pathname === link.href
+                                ? "text-primary font-semibold"
+                                : ""
+                            }`}
+                            aria-label={link.ariaLabel}
+                          >
+                            {link.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </li>
               </ul>
 
               <div className="flex items-center gap-3">
-                <Button variant="ghost" size="icon" aria-label="Ver carrito de compras" onClick={handleCartClick}>
-                  <ShoppingBag className="w-5 h-5" aria-hidden="true" />
-                </Button>
-                <Button variant="default" size="sm" asChild>
-                  <Link to="/tienda">
-                  Comprar Ahora
-                  </Link>
+                <Link
+                  to="/carrito"
+                  className="relative p-2 rounded-lg hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  aria-label={`Ver carrito de compras${itemCount > 0 ? ` (${itemCount} productos)` : ""}`}
+                >
+                  <ShoppingBag className="w-6 h-6" aria-hidden="true" />
+                  {itemCount > 0 && (
+                    <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
+                      {itemCount > 9 ? "9+" : itemCount}
+                    </span>
+                  )}
+                </Link>
+                <Button variant="default" size="default" asChild className="text-base">
+                  <Link to="/tienda">Comprar Ahora</Link>
                 </Button>
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 rounded-lg hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-expanded={isOpen}
-              aria-controls="mobile-menu"
-              aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
-            >
-              {isOpen ? (
-                <X className="w-6 h-6" aria-hidden="true" />
-              ) : (
-                <Menu className="w-6 h-6" aria-hidden="true" />
-              )}
-            </button>
+            {/* Mobile Menu Button & Cart */}
+            <div className="lg:hidden flex items-center gap-2">
+              <Link
+                to="/carrito"
+                className="relative p-2 rounded-lg hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label={`Ver carrito de compras${itemCount > 0 ? ` (${itemCount} productos)` : ""}`}
+              >
+                <ShoppingBag className="w-6 h-6" aria-hidden="true" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
+                    {itemCount > 9 ? "9+" : itemCount}
+                  </span>
+                )}
+              </Link>
+              <button
+                className="p-2 rounded-lg hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
+                aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+              >
+                {isOpen ? (
+                  <X className="w-6 h-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="w-6 h-6" aria-hidden="true" />
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu */}
           <div
             id="mobile-menu"
             className={`lg:hidden transition-all duration-300 overflow-hidden ${
-              isOpen ? "max-h-96 pb-6" : "max-h-0"
+              isOpen ? "max-h-[600px] pb-6" : "max-h-0"
             }`}
             aria-hidden={!isOpen}
           >
             <ul className="flex flex-col gap-2 pt-4" role="list">
-              {navLinks.map((link) => (
+              {allMobileLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
@@ -154,13 +216,11 @@ export function Navigation() {
               <li className="pt-4">
                 <Button
                   variant="default"
-                  className="w-full"
+                  className="w-full text-base"
                   tabIndex={isOpen ? 0 : -1}
                   asChild
                 >
-                  <Link to="/tienda">
-                  Comprar Ahora
-                  </Link>
+                  <Link to="/tienda">Comprar Ahora</Link>
                 </Button>
               </li>
             </ul>
