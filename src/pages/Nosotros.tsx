@@ -49,19 +49,19 @@
    {
      name: "Talia Fernández",
      role: "Fundadora y CEO",
-     image: "https://images.unsplash.com/photo-1614786269829-d24616faf56d?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+     image: "/src/assets/talia.png",
      bio: "Gerontóloga con 15 años de experiencia en atención a adultos mayores.",
    },
    {
      name: "Fernanda Fernández",
      role: "Directora de operaciones",
-     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop",
+     image: "/src/assets/fernanda.png",
      bio: "Especialista en cadenas de suministro social y comercio justo.",
    },
    {
      name: "Claudia Fernández",
      role: "Directora de impacto social",
-     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop",
+     image: "/src/assets/claudia.png",
      bio: "Trabajadora social con enfoque en programas de terapia ocupacional.",
    },
  ];
