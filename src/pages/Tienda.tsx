@@ -5,7 +5,19 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Heart, MessageCircle, Search, Filter, SlidersHorizontal } from "lucide-react";
- import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
+
+// Import images properly for Vite
+import mermeladaImg from "@/assets/mermelada.png";
+import velaImg from "@/assets/vela.png";
+import bolsaImg from "@/assets/bolsa.png";
+import jabonImg from "@/assets/jabon.png";
+import mielImg from "@/assets/miel.png";
+import aceiteImg from "@/assets/aceite.png";
+import cafeImg from "@/assets/cafe.png";
+import macetaImg from "@/assets/maceta.png";
+import salesImg from "@/assets/sales.png";
+import licorImg from "@/assets/licor.png";
 
 interface Product {
   id: string;
@@ -26,7 +38,7 @@ const allProducts: Product[] = [
     price: 185,
     artisan: "Don Manuel, 78 años",
     center: "Casa del abuelo feliz, Oaxaca",
-    image: "src/assets/mermelada.png",
+    image: mermeladaImg,
     description: "Elaborada con higos frescos de temporada y el toque secreto de décadas de experiencia.",
   },
   {
@@ -36,7 +48,7 @@ const allProducts: Product[] = [
     price: 145,
     artisan: "María Elena, 82 años",
     center: "Hogar San José, Querétaro",
-    image: "src/assets/vela.png",
+    image: velaImg,
     description: "Vela 100% natural con aroma suave, perfecta para crear ambientes de paz.",
   },
   {
@@ -46,7 +58,7 @@ const allProducts: Product[] = [
     price: 890,
     artisan: "Grupo Esperanza",
     center: "CADI Luz y vida, CDMX",
-    image: "src/assets/bolsa.png",
+    image: bolsaImg,
     description: "Bolsa tejida a mano con técnicas tradicionales heredadas por generaciones.",
   },
   {
@@ -56,7 +68,7 @@ const allProducts: Product[] = [
     price: 95,
     artisan: "Doña Lupita, 75 años",
     center: "Asilo Santa María, Guadalajara",
-    image: "src/assets/jabon.png",
+    image: jabonImg,
     description: "Jabón artesanal con aceites esenciales de lavanda orgánica.",
   },
   {
@@ -66,7 +78,7 @@ const allProducts: Product[] = [
     price: 220,
     artisan: "Don Roberto, 80 años",
     center: "Hogar de ancianos Esperanza, Yucatán",
-    image: "src/assets/miel.png",
+    image: mielImg,
     description: "Miel pura recolectada de apiarios tradicionales mayas.",
   },
   {
@@ -76,7 +88,7 @@ const allProducts: Product[] = [
     price: 275,
     artisan: "Don Aurelio, 76 años",
     center: "Asilo San Francisco, Baja California",
-    image: "src/assets/aceite.png",
+    image: aceiteImg,
     description: "Aceite extra virgen infusionado con hierbas del jardín del centro.",
   },
   {
@@ -86,7 +98,7 @@ const allProducts: Product[] = [
     price: 195,
     artisan: "Grupo cafetero Sabiduría",
     center: "Hogar Tercera edad, Veracruz",
-    image: "src/assets/cafe.png",
+    image: cafeImg,
     description: "Café de altura tostado artesanalmente con notas de chocolate.",
   },
   {
@@ -96,7 +108,7 @@ const allProducts: Product[] = [
     price: 320,
     artisan: "Don Jesús, 83 años",
     center: "Centro geriátrico Felicidad, Michoacán",
-    image: "src/assets/maceta.png",
+    image: macetaImg,
     description: "Maceta decorativa con diseños tradicionales purépechas.",
   },
   {
@@ -106,7 +118,7 @@ const allProducts: Product[] = [
     price: 125,
     artisan: "Doña Teresa, 77 años",
     center: "Asilo Nuestra señora, Puebla",
-    image: "src/assets/sales.png",
+    image: salesImg,
     description: "Sales minerales con mezcla de hierbas relajantes.",
   },
   {
@@ -116,7 +128,7 @@ const allProducts: Product[] = [
     price: 380,
     artisan: "Don Fernando, 81 años",
     center: "Hogar San Vicente, Aguascalientes",
-    image: "src/assets/licor.png",
+    image: licorImg,
     description: "Licor artesanal elaborado con la receta familiar del artesano.",
   },
 ];
