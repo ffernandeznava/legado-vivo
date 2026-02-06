@@ -12,7 +12,7 @@ const footerLinks = {
     { label: "Nuestra historia", href: "/nosotros" },
     { label: "Impacto social", href: "/impacto" },
     { label: "Únete a la red", href: "/unete" },
-    { label: "Para empresas", href: "/empresas" },
+    { label: " Para empresas", href: "/empresas" },
   ],
   ayuda: [
     { label: "Preguntas frecuentes", href: "/faq" },
