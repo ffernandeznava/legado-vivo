@@ -167,7 +167,7 @@ export const allProducts: Product[] = [
     artisanAge: 0,
     center: "Hogar Tercera edad",
     state: "Veracruz",
-    image: cafeImg,
+    image: cafeIm,
     description: "Café de altura tostado artesanalmente con notas de chocolate.",
     longDescription: "El Grupo Cafetero Sabiduría reúne a 8 ex-caficultores residentes del hogar, quienes supervisan cada etapa del proceso. El café proviene de fincas de altura en Coatepec, Veracruz, y es tostado en pequeños lotes en el taller del centro, garantizando frescura y un perfil de sabor con notas de chocolate y nuez.",
     materials: ["Granos de café arábica 100%", "Origen: Coatepec, Veracruz", "Altura: 1,200 msnm", "Tueste medio-oscuro"],
