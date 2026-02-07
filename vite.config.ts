@@ -5,6 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: '/legado-vivo-artisano-d7f00cb8/'
   server: {
     host: "::",
     port: 8080,
