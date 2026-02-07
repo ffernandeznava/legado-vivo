@@ -22,7 +22,7 @@ const featuredProducts: Product[] = [
     price: 185,
     artisan: "Manuel, 78 años",
     center: "Casa del abuelo feliz, Oaxaca",
-    image: "src/assets/mermelada.png",
+    image: "../src/assets/mermelada.png",
   },
   {
     id: "2",
@@ -31,7 +31,7 @@ const featuredProducts: Product[] = [
     price: 145,
     artisan: "María Elena, 82 años",
     center: "Hogar San José, Querétaro",
-    image: "src/assets/vela.png",
+    image: "../src/assets/vela.png",
   },
   {
     id: "3",
@@ -40,7 +40,7 @@ const featuredProducts: Product[] = [
     price: 890,
     artisan: "Grupo Esperanza",
     center: "CADI Luz y vida, CDMX",
-    image: "src/assets/bolsa.png",
+    image: "../src/assets/bolsa.png",
   },
   {
     id: "4",
@@ -49,7 +49,7 @@ const featuredProducts: Product[] = [
     price: 95,
     artisan: "Lupita, 75 años",
     center: "Asilo Santa María, Guadalajara",
-    image: "src/assets/jabon.png",
+    image: "../src/assets/jabon.png",
   },
 ];
 

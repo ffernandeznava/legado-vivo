@@ -29,7 +29,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/legado-vivo-artisano-d7f00cb8">
+        <BrowserRouter basename="/legado-vivo">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/tienda" element={<Tienda />} />
